@@ -1,16 +1,9 @@
 # Refactoring Assessment
 
-This repository contains a terribly written Web API project. It's terrible on purpose, so you can show us how we can improve it.
-
-## Getting Started
-
-Fork this repository, and make the changes you would want to see if you had to maintain this api. To set up the project:
-
- - Open in Visual Studio (2015 or later is preferred)
- - Restore the NuGet packages and rebuild
- - Run the project
- 
- Once you are satisied, replace the contents of the readme with a summary of what you have changed, and why. If there are more things that could be improved, list them as well.
+- Added service classes to handle all SQL queries, making it easier to maintain and make changes
+- removed sql methods from models, moved to new services ... models should be only concerned with properties, fields, and get - set methods.
+- Removed sql queries from controllers, moved to new services .. api contract remains the same, so earlier users of the api endpoints will still recieve same result.
+- Using the service query classes we can place common fields or properties in the parent `QueryService` class, and keep queries specific to each controller, or table, within their own classes,
 
 The api is composed of the following endpoints:
 
@@ -24,15 +17,15 @@ The api is composed of the following endpoints:
 | `GET`    | `/api/Accounts/{id:guid}/Transactions` | Gets the list of transactions for an account
 | `POST`   | `/api/Accounts/{id:guid}/Transactions` | Adds a transaction to an account, and updates the amount of money in the account
 
-Models should conform to the following formats:
+Models conform to the following formats:
 
 **Account**
 ```
 {
     "Id": "01234567-89ab-cdef-0123-456789abcdef",
-	"Name": "Savings",
-	"Number": "012345678901234",
-	"Amount": 123.4
+    "Name": "Savings",
+    "Number": "012345678901234",
+    "Amount": 123.4
 }
 ```	
 
@@ -43,12 +36,6 @@ Models should conform to the following formats:
     "Amount": -12.3
 }
 ```
-
-**Refactor for maintainability**
-
-- Added services to handle all SQL queries, making it easier to maintain and make changes
-- removed sql methods from models, moved to new services ... models should be only concerned with properties, fields, and get - set methods.
-- Removed sql queries from controllers, moved to new services .. api contract remains the same, so earlier users of the api endpoints will still recieve same result.
 
 **Future enhancements**
 
