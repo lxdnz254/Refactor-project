@@ -62,5 +62,3 @@ Models should conform to the following formats:
 | `GET`    | `/api/Accounts/{id:guid}/Transactions/{string:datetimes}`  | Get list of transactions for an account between two dates
 | `GET`    | `/api/Accounts/{string:datetime}`                          | Get list of transactions for all accounts for a given date
 | `GET`    | `/api/Accounts/{string:datetime}/Transactions`             | Get total balance of all accounts for a given date
-|
-
